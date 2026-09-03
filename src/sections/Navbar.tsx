@@ -52,7 +52,7 @@ const Navbar = ({ activePage }: NavbarProps) => {
       </nav>
 
       {/* MOBILE TRIGGER + DROPDOWN */}
-      <div className="relative lg:hidden">
+      <div ref={panelRef} className="relative lg:hidden">
         <button
           onClick={() => setOpen((v) => !v)}
           className="relative z-20 flex h-11 w-11 items-center justify-center border border-white/30"
@@ -73,7 +73,6 @@ const Navbar = ({ activePage }: NavbarProps) => {
         </button>
 
         <div
-          ref={panelRef}
           className={`absolute right-0 top-[calc(100%+10px)] w-64 origin-top-right rounded-lg border border-white/10 bg-[#171310] shadow-2xl transition-all duration-200 ease-out ${
             open
               ? "scale-100 opacity-100"
