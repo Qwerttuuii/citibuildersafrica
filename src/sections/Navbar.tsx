@@ -32,7 +32,7 @@ const Navbar = ({ activePage }: NavbarProps) => {
     <header className="relative z-20 flex items-center justify-between px-6 py-7 sm:px-8 lg:px-[3.2vw] lg:py-8">
       <Link to="/" className="relative z-20">
         <img
-          src="/images/logo.png"
+          src="/images/logo.avif"
           alt="CitiBuilder Africa"
           className="h-auto w-[170px] object-contain sm:w-[190px]"
         />
