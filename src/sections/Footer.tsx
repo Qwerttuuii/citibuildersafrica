@@ -2,6 +2,7 @@ import { offices } from "./data/offices";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,13 +61,13 @@ const Footer = () => {
           <ul className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   className="group inline-flex flex-col font-['Manrope'] text-base text-[#f5f3ef]/80 transition-colors duration-300 hover:text-[#f5f3ef]"
                 >
                   {link.label}
                   <span className="mt-0.5 h-px w-0 bg-[#E6A776] transition-all duration-300 group-hover:w-full" />
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

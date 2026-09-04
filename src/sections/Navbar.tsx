@@ -1,6 +1,7 @@
 // src/sections/Navbar.tsx
 import { useEffect, useRef, useState } from "react";
 import { Home, Building2, Info, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type NavbarProps = {
   activePage?: "home" | "properties" | "about" | "contact";
@@ -29,25 +30,25 @@ const Navbar = ({ activePage }: NavbarProps) => {
 
   return (
     <header className="relative z-20 flex items-center justify-between px-6 py-7 sm:px-8 lg:px-[3.2vw] lg:py-8">
-      <a href="/" className="relative z-20">
+      <Link to="/" className="relative z-20">
         <img
           src="/images/logo.png"
           alt="CitiBuilder Africa"
           className="h-auto w-[170px] object-contain sm:w-[190px]"
         />
-      </a>
+      </Link>
 
       <nav className="hidden items-center gap-10 lg:flex">
         {navItems.map((item) => (
-          <a
+          <Link
             key={item.key}
-            href={item.href}
+            to={item.href}
             className={`font-['Manrope'] text-[11px] uppercase tracking-[0.25em] transition-colors duration-300 hover:text-[#E6A776] ${
               activePage === item.key ? "text-[#E6A776]" : "text-white"
             }`}
           >
             {item.label}
-          </a>
+          </Link>
         ))}
       </nav>
 
@@ -84,9 +85,9 @@ const Navbar = ({ activePage }: NavbarProps) => {
               const Icon = item.icon;
               const isActive = activePage === item.key;
               return (
-                <a
+                <Link
                   key={item.key}
-                  href={item.href}
+                  to={item.href}
                   onClick={() => setOpen(false)}
                   className={`flex items-center gap-3 rounded-md px-3 py-3 font-['Manrope'] text-sm transition-colors duration-200 ${
                     isActive
@@ -96,19 +97,19 @@ const Navbar = ({ activePage }: NavbarProps) => {
                 >
                   <Icon size={17} strokeWidth={1.75} />
                   {item.label}
-                </a>
+                </Link>
               );
             })}
           </nav>
 
           <div className="border-t border-white/10 p-2">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               onClick={() => setOpen(false)}
               className="flex items-center justify-center rounded-md bg-[#E6A776] px-3 py-3 font-['Manrope'] text-[11px] uppercase tracking-[0.15em] text-black"
             >
               Book a site visit
-            </a>
+            </Link>
           </div>
         </div>
       </div>

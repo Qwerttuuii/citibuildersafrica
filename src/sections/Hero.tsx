@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
 const Hero = () => {
@@ -139,8 +140,8 @@ const Hero = () => {
                 View Available Land
               </a>
 
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="group inline-flex items-center gap-3 font-['Manrope'] text-[10px] uppercase tracking-[0.25em] text-white transition-colors duration-300 hover:text-[#E6A776]"
               >
                 Book a Site Visit
@@ -149,7 +150,7 @@ const Hero = () => {
                   strokeWidth={1.5}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
