@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Loader2 } from "lucide-react";
 import { offices } from "./data/offices";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -36,6 +36,7 @@ const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [activeOffice, setActiveOffice] = useState(0);
   const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [mapLoading, setMapLoading] = useState(true);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -55,6 +56,12 @@ const ContactForm = () => {
 
     return () => ctx.revert();
   }, []);
+
+  // Reset the spinner every time a different office is selected,
+  // since the iframe remounts (key={selected.state}) and blanks out.
+  useEffect(() => {
+    setMapLoading(true);
+  }, [activeOffice]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -170,7 +177,7 @@ const ContactForm = () => {
 
             {status === "error" && (
               <p className="mt-4 font-['Manrope'] text-sm text-red-400">
-                Something went wrong — try again, or call us directly below.
+                Something went wrong try again, or call us directly below.
               </p>
             )}
           </form>
@@ -184,7 +191,7 @@ const ContactForm = () => {
             data-reveal
             className="mb-10 translate-y-6 font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.3em] text-[#E6A776] opacity-0"
           >
-            Offices
+           Our Offices
           </p>
 
           <div data-reveal className="translate-y-6 border-t border-[#0d0d0c]/15 opacity-0">
@@ -232,12 +239,23 @@ const ContactForm = () => {
         </div>
 
         {/* MAP */}
-        <div className="relative min-h-[360px] w-full flex-1">
+        <div className="relative min-h-[360px] w-full flex-1 bg-[#ECE8DF]">
+          {mapLoading && (
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3">
+              <Loader2 size={22} className="animate-spin text-[#E6A776]" strokeWidth={2} />
+              <span className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-[0.2em] text-[#0d0d0c]/40">
+                Loading Map
+              </span>
+            </div>
+          )}
           <iframe
             key={selected.state}
             title={`Map to ${selected.state} office`}
             src={mapSrc}
-            className="absolute inset-0 h-full w-full grayscale-[0.3]"
+            onLoad={() => setMapLoading(false)}
+            className={`absolute inset-0 h-full w-full grayscale-[0.3] transition-opacity duration-500 ${
+              mapLoading ? "opacity-0" : "opacity-100"
+            }`}
             style={{ border: 0 }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
