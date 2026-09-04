@@ -8,6 +8,7 @@ import Footer from "./sections/Footer";
 import ContactHero from "./sections/ContactHero";
 import ContactForm from "./sections/ContactForm";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AdModal from "./components/AdModal";
 
 const HomePage = () => (
   <main>
@@ -15,7 +16,7 @@ const HomePage = () => (
     <Thesis />
     <NowSelling />
     <TrackRecord />
-    <Mission image="/images/houses.jpg" />
+    <Mission image="/images/houses.avif" />
     <WalkTheLand image="/images/housesbanner.jpg" />
     <Footer />
   </main>
@@ -23,7 +24,7 @@ const HomePage = () => (
 
 const ContactPage = () => (
   <main>
-    <ContactHero image="/images/contacthero.jpg" />
+    <ContactHero image="/images/contacthero.avif" />
     <ContactForm />
     <Footer />
   </main>
@@ -32,6 +33,7 @@ const ContactPage = () => (
 function App() {
   return (
     <BrowserRouter>
+     <AdModal images={["/images/spotlight1.avif", "/images/spotlight2.avif"]} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />

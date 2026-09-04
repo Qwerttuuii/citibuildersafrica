@@ -21,14 +21,14 @@ const listings: Listing[] = [
     price: "N15M",
     location: "Obinze, Imo State",
     status: "Selling now",
-    image: "/images/bliss.jpeg",
+    image: "/images/bliss.avif",
   },
   {
     title: "Rehoboth Gardens",
     price: "N2M",
     location: "Ejemekuru, Imo State",
     status: "Selling now",
-    image: "/images/rehoboth.jpeg",
+    image: "/images/rehoboth.avif",
     offset: "lg:mt-36",
   },
   {
@@ -36,7 +36,7 @@ const listings: Listing[] = [
     price: "N2M",
     location: "Agbura, Yenegoa",
     status: "Selling now",
-    image: "/images/dynamicview.jpeg",
+    image: "/images/dynamicview.avif",
     offset: "lg:mt-14",
   },
 ];

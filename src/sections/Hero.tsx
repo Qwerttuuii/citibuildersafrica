@@ -78,7 +78,7 @@ const Hero = () => {
         className="absolute inset-y-0 right-0 w-full lg:w-[58%]"
       >
         <img
-          src="/images/hero.jpg"
+          src="/images/hero.avif"
           alt="CitiBuilder Africa property"
           className="h-full w-full object-cover"
         />
