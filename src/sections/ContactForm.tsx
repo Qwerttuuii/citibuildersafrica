@@ -1,9 +1,10 @@
 // src/sections/ContactForm.tsx
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronDown, Loader2 } from "lucide-react";
 import { offices } from "./data/offices";
+import { listings } from "./data/listings";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,10 +13,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
 const developments = [
   "Not sure yet — advise me",
-  "Agro City Phase 2",
-  "Agro City Phase 3",
-  "Rehoboth Gardens Phase 3",
-  "Dynamic View Estate",
+  ...listings.map((l) => l.title),
 ];
 
 type SubmitStatus = "idle" | "submitting" | "success" | "error";
@@ -37,6 +35,12 @@ const ContactForm = () => {
   const [activeOffice, setActiveOffice] = useState(0);
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [mapLoading, setMapLoading] = useState(true);
+
+  const preselectedDevelopment = useMemo(() => {
+    const params = new URLSearchParams(window.location.search);
+    const value = params.get("development");
+    return value && developments.includes(value) ? value : developments[0];
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -106,7 +110,7 @@ const ContactForm = () => {
         {status === "success" ? (
           <div
             data-reveal
-            className="max-w-[520px] translate-y-6 border border-[#E6A776]/40 bg-[#E6A776]/10 px-6 py-8 opacity-0"
+            className="max-w-130 translate-y-6 border border-[#E6A776]/40 bg-[#E6A776]/10 px-6 py-8 opacity-0"
           >
             <p className="font-['Archivo_Black'] text-xl text-[#E6A776]">
               Enquiry sent.
@@ -120,7 +124,7 @@ const ContactForm = () => {
             ref={formRef}
             onSubmit={handleSubmit}
             data-reveal
-            className="max-w-[520px] translate-y-6 opacity-0"
+            className="max-w-130 translate-y-6 opacity-0"
           >
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
               <div>
@@ -142,7 +146,7 @@ const ContactForm = () => {
               <FieldLabel>Development of interest</FieldLabel>
               <select
                 name="development"
-                defaultValue={developments[0]}
+                defaultValue={preselectedDevelopment}
                 className="w-full appearance-none border-b border-white/20 bg-transparent pb-3 pr-8 font-['Manrope'] text-base text-white outline-none transition-colors duration-300 focus:border-[#E6A776]"
               >
                 {developments.map((d) => (
@@ -170,7 +174,7 @@ const ContactForm = () => {
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="mt-10 inline-flex h-[54px] items-center justify-center bg-[#E6A776] px-8 font-['Manrope'] text-[10px] uppercase tracking-[0.25em] text-black transition-all duration-300 hover:bg-[#ddb454] disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-10 inline-flex h-13.5 items-center justify-center bg-[#E6A776] px-8 font-['Manrope'] text-[10px] uppercase tracking-[0.25em] text-black transition-all duration-300 hover:bg-[#ddb454] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "submitting" ? "Sending..." : "Send enquiry"}
             </button>
@@ -191,7 +195,7 @@ const ContactForm = () => {
             data-reveal
             className="mb-10 translate-y-6 font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.3em] text-[#E6A776] opacity-0"
           >
-           Our Offices
+            Our Offices
           </p>
 
           <div data-reveal className="translate-y-6 border-t border-[#0d0d0c]/15 opacity-0">
@@ -239,7 +243,7 @@ const ContactForm = () => {
         </div>
 
         {/* MAP */}
-        <div className="relative min-h-[360px] w-full flex-1 bg-[#ECE8DF]">
+        <div className="relative min-h-90 w-full flex-1 bg-[#ECE8DF]">
           {mapLoading && (
             <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3">
               <Loader2 size={22} className="animate-spin text-[#E6A776]" strokeWidth={2} />

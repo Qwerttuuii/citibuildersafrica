@@ -5,18 +5,25 @@ import { Link } from "react-router-dom";
 
 type NavbarProps = {
   activePage?: "home" | "properties" | "about" | "contact";
+  theme?: "dark" | "light"; // "dark" = for dark hero sections (default), "light" = for pale backgrounds
 };
 
 const navItems = [
   { label: "Home", href: "/", key: "home" as const, icon: Home },
-  { label: "Properties", href: "#", key: "properties" as const, icon: Building2 },
+  { label: "Properties", href: "/properties", key: "properties" as const, icon: Building2 },
   { label: "About", href: "#", key: "about" as const, icon: Info },
   { label: "Contact", href: "/contact", key: "contact" as const, icon: Phone },
 ];
 
-const Navbar = ({ activePage }: NavbarProps) => {
+const Navbar = ({ activePage, theme = "dark" }: NavbarProps) => {
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  const isLight = theme === "light";
+  const baseTextColor = isLight ? "text-[#0d0d0c]" : "text-white";
+  const borderColor = isLight ? "border-[#0d0d0c]/30" : "border-white/30";
+  const lineColor = isLight ? "bg-[#0d0d0c]" : "bg-white";
+  const logoSrc = isLight ? "/images/logo-dark.avif" : "/images/logo.avif";
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -32,9 +39,9 @@ const Navbar = ({ activePage }: NavbarProps) => {
     <header className="relative z-20 flex items-center justify-between px-6 py-7 sm:px-8 lg:px-[3.2vw] lg:py-8">
       <Link to="/" className="relative z-20">
         <img
-          src="/images/logo.avif"
+          src={logoSrc}
           alt="CitiBuilder Africa"
-          className="h-auto w-[170px] object-contain sm:w-[190px]"
+          className="h-auto w-42.5 object-contain sm:w-47.5"
         />
       </Link>
 
@@ -44,7 +51,7 @@ const Navbar = ({ activePage }: NavbarProps) => {
             key={item.key}
             to={item.href}
             className={`font-['Manrope'] text-[11px] uppercase tracking-[0.25em] transition-colors duration-300 hover:text-[#E6A776] ${
-              activePage === item.key ? "text-[#E6A776]" : "text-white"
+              activePage === item.key ? "text-[#E6A776]" : baseTextColor
             }`}
           >
             {item.label}
@@ -56,23 +63,25 @@ const Navbar = ({ activePage }: NavbarProps) => {
       <div ref={panelRef} className="relative lg:hidden">
         <button
           onClick={() => setOpen((v) => !v)}
-          className="relative z-20 flex h-11 w-11 items-center justify-center border border-white/30"
+          className={`relative z-20 flex h-11 w-11 items-center justify-center border ${borderColor}`}
           aria-label="Open menu"
         >
           <span className="flex flex-col gap-1.5">
             <span
-              className={`block h-px w-5 bg-white transition-transform duration-300 ${
-                open ? "translate-y-[3px] rotate-45" : ""
+              className={`block h-px w-5 ${lineColor} transition-transform duration-300 ${
+                open ? "translate-y-0.75 rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-px w-5 bg-white transition-transform duration-300 ${
-                open ? "-translate-y-[3px] -rotate-45" : ""
+              className={`block h-px w-5 ${lineColor} transition-transform duration-300 ${
+                open ? "-translate-y-0.75 -rotate-45" : ""
               }`}
             />
           </span>
         </button>
 
+        {/* Dropdown panel is always dark, regardless of page theme —
+            it's a floating card, not part of the page background. */}
         <div
           className={`absolute right-0 top-[calc(100%+10px)] w-64 origin-top-right rounded-lg border border-white/10 bg-[#171310] shadow-2xl transition-all duration-200 ease-out ${
             open

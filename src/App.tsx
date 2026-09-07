@@ -7,6 +7,7 @@ import WalkTheLand from "./sections/WalkTheLand";
 import Footer from "./sections/Footer";
 import ContactHero from "./sections/ContactHero";
 import ContactForm from "./sections/ContactForm";
+import Properties from "./pages/Properties";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdModal from "./components/AdModal";
 
@@ -36,6 +37,7 @@ function App() {
      <AdModal images={["/images/spotlight1.avif", "/images/spotlight2.avif"]} />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/properties" element={<Properties />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </BrowserRouter>

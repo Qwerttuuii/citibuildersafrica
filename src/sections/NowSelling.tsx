@@ -45,7 +45,7 @@ function PlotPlaceholder({ label }: { label: string }) {
   const patternId = useId();
   return (
     <div className="absolute inset-0 flex items-center justify-center bg-[#171310]">
-      <svg className="absolute inset-0 h-full w-full text-[#E6A776]/[0.12]">
+      <svg className="absolute inset-0 h-full w-full text-[#E6A776]/12">
         <pattern id={patternId} width="36" height="36" patternUnits="userSpaceOnUse">
           <path d="M36 0H0V36" fill="none" stroke="currentColor" strokeWidth="1" />
         </pattern>
@@ -65,7 +65,7 @@ function ListingCard({ item }: { item: Listing }) {
 
   return (
     <a href="/properties" data-reveal className={"group block " + offsetClass}>
-      <div className="relative aspect-[4/5] w-full overflow-hidden">
+      <div className="relative aspect-4/5 w-full overflow-hidden">
         {item.image ? (
           <img
             src={item.image}
