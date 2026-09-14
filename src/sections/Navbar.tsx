@@ -11,7 +11,7 @@ type NavbarProps = {
 const navItems = [
   { label: "Home", href: "/", key: "home" as const, icon: Home },
   { label: "Properties", href: "/properties", key: "properties" as const, icon: Building2 },
-  { label: "About", href: "#", key: "about" as const, icon: Info },
+  { label: "About", href: "/about", key: "about" as const, icon: Info },
   { label: "Contact", href: "/contact", key: "contact" as const, icon: Phone },
 ];
 

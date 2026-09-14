@@ -103,9 +103,7 @@ const Mission = ({ image }: MissionProps) => {
           data-reveal
           className="mt-8 max-w-[440px] translate-y-8 opacity-0 font-['Manrope'] text-sm leading-7 text-[#0d0d0c]/75 sm:text-base sm:leading-8"
         >
-          Delivering affordable, high value real estate opportunities with
-          integrity and excellence so millions of Africans can build
-          generational wealth through land.
+          To make property ownership simple, secure, and accessible by delivering affordable, high-value real estate opportunities with integrity and excellence.
         </p>
 
         <a

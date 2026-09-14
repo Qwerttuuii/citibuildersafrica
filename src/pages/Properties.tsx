@@ -10,7 +10,7 @@ type LocationFilter = "All" | Listing["state"];
 type TypeFilter = "All" | Listing["type"];
 type PriceFilter = "any" | 1000000 | 2000000 | 4000000;
 
-const locations: LocationFilter[] = ["All", "Imo", "Bayelsa", "Delta", "Akwa Ibom"];
+const locations: LocationFilter[] = ["All", "Imo", "Bayelsa",  "Akwa Ibom"];
 const types: TypeFilter[] = ["All", "Residential", "Agro", "Commercial"];
 const priceOptions: { label: string; value: PriceFilter }[] = [
   { label: "Any price", value: "any" },

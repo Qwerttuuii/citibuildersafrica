@@ -60,7 +60,7 @@ const ContactHero = ({ image }: ContactHeroProps) => {
 
       <Navbar activePage="contact" />
 
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 py-20 text-center sm:px-8 lg:py-28">
+      <div className="relative z-10 flex flex-1 flex-col items-start justify-center px-6 py-20 text-left sm:px-8 lg:py-28">
         <p
           data-reveal
           className="mb-6 translate-y-6 font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.3em] text-[#E6A776] opacity-0"

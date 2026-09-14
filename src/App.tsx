@@ -10,6 +10,7 @@ import ContactForm from "./sections/ContactForm";
 import Properties from "./pages/Properties";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdModal from "./components/AdModal";
+import About from "./pages/About";
 
 const HomePage = () => (
   <main>
@@ -39,6 +40,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/properties" element={<Properties />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
