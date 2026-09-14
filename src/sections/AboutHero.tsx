@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ArrowRight } from "lucide-react";
 import Navbar from "./Navbar";
 
 type AboutHeroProps = {

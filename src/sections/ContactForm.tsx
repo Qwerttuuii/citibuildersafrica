@@ -34,7 +34,7 @@ const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [activeOffice, setActiveOffice] = useState(0);
   const [status, setStatus] = useState<SubmitStatus>("idle");
-  const [mapLoading, setMapLoading] = useState(true);
+  const [loadedOffice, setLoadedOffice] = useState<number | null>(null);
 
   const preselectedDevelopment = useMemo(() => {
     const params = new URLSearchParams(window.location.search);
@@ -60,12 +60,6 @@ const ContactForm = () => {
 
     return () => ctx.revert();
   }, []);
-
-  // Reset the spinner every time a different office is selected,
-  // since the iframe remounts (key={selected.state}) and blanks out.
-  useEffect(() => {
-    setMapLoading(true);
-  }, [activeOffice]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -95,6 +89,7 @@ const ContactForm = () => {
   const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
     selected.address
   )}&output=embed`;
+  const mapLoading = loadedOffice !== activeOffice;
 
   return (
     <section ref={sectionRef} className="grid grid-cols-1 lg:grid-cols-2">
@@ -256,7 +251,7 @@ const ContactForm = () => {
             key={selected.state}
             title={`Map to ${selected.state} office`}
             src={mapSrc}
-            onLoad={() => setMapLoading(false)}
+            onLoad={() => setLoadedOffice(activeOffice)}
             className={`absolute inset-0 h-full w-full grayscale-[0.3] transition-opacity duration-500 ${
               mapLoading ? "opacity-0" : "opacity-100"
             }`}
