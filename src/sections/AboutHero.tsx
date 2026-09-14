@@ -16,7 +16,7 @@ function ImagePlaceholder() {
         <rect width="100%" height="100%" fill="url(#aboutHeroGrid)" />
       </svg>
       <span className="relative z-10 font-['JetBrains_Mono'] text-[10px] uppercase tracking-[0.2em] text-[#E6A776]/50">
-        Image pending
+        Image 
       </span>
     </div>
   );
