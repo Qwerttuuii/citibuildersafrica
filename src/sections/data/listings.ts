@@ -14,7 +14,7 @@ export type Listing = {
   priceValue: number; // raw naira value, used by the price filter
   status: ListingStatus;
   description: string;
-  image?: string; // add real photo path later — placeholder shows until then
+  image?: string;
 };
 
 export const listings: Listing[] = [
@@ -25,11 +25,12 @@ export const listings: Listing[] = [
     state: "Imo",
     type: "Agro",
     size: "500 sqm plots",
-    priceLabel: "₦750K",
-    priceValue: 750000,
+    priceLabel: "₦1M",
+    priceValue: 1000000,
     status: "Selling fast",
     description:
       "Farmland-backed plots with cleared access roads and drainage in place.",
+    image: "/images/Agro%20city%20phase%202.avif",
   },
   {
     slug: "agro-city-phase-3",
@@ -38,24 +39,26 @@ export const listings: Listing[] = [
     state: "Imo",
     type: "Agro",
     size: "500 sqm plots",
-    priceLabel: "₦1M",
-    priceValue: 1000000,
-    status: "Now selling",
-    description:
-      "Newly surveyed extension bordering the Owerri–Onitsha corridor.",
-  },
-  {
-    slug: "rehoboth-gardens-phase-3",
-    title: "Rehoboth Gardens Phase 3",
-    location: "Owerri, Imo State",
-    state: "Imo",
-    type: "Residential",
-    size: "450 sqm plots",
     priceLabel: "₦1.5M",
     priceValue: 1500000,
     status: "Now selling",
     description:
+      "Newly surveyed extension bordering the Owerri–Onitsha corridor.",
+    image: "/images/Agro%20city%20phase%203.avif",
+  },
+  {
+    slug: "rehoboth-gardens-phase-3",
+    title: "Rehoboth Gardens Phase 3",
+    location: "Uyo, Akwa Ibom State",
+    state: "Akwa Ibom",
+    type: "Residential",
+    size: "300 sqm plots",
+    priceLabel: "₦2M",
+    priceValue: 2000000,
+    status: "Now selling",
+    description:
       "Gated residential layout with perimeter fencing and estate lighting.",
+    image: "/images/rehoboth.avif",
   },
   {
     slug: "palm-grove-estate",
@@ -69,6 +72,7 @@ export const listings: Listing[] = [
     status: "Selling fast",
     description:
       "Palm seedlings, planting, fertiliser and bush clearing bundled per plot.",
+        image: "/images/palmgrove2.avif",
   },
   {
     slug: "glory-drive-estate",
@@ -82,6 +86,7 @@ export const listings: Listing[] = [
     status: "Now selling",
     description:
       "City-edge residential plots minutes from the Yenagoa ring road.",
+    image: "/images/GLORY%20DRIVE.avif",
   },
 
   // --- Placeholder listings below ---
@@ -98,30 +103,8 @@ export const listings: Listing[] = [
     priceValue: 2000000,
     status: "Now selling",
     description: "Waterside residential plots on reclaimed, sand-filled ground.",
+    image: "/images/dynamicview.avif",
   },
-  {
-    slug: "nnebisi-business-park",
-    title: "Nnebisi Business Park",
-    location: "Asaba, Delta State",
-    state: "Delta",
-    type: "Commercial",
-    size: "Commercial plots from 300 sqm",
-    priceLabel: "₦3.5M",
-    priceValue: 3500000,
-    status: "Now selling",
-    description:
-      "Fronting the Asaba–Onitsha expressway, zoned for retail and office use.",
-  },
-  {
-    slug: "uyo-heritage-court",
-    title: "Uyo Heritage Court",
-    location: "Uyo, Akwa Ibom State",
-    state: "Akwa Ibom",
-    type: "Residential",
-    size: "500 sqm plots",
-    priceLabel: "₦1.8M",
-    priceValue: 1800000,
-    status: "Selling fast",
-    description: "Residential layout inside a fenced and gated estate.",
-  },
+  
+
 ];
