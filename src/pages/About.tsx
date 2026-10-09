@@ -10,7 +10,7 @@ const About = () => {
   return (
     <main>
       <AboutHero image="/images/abouthero.avif" />
-      <OriginStory image="/images/ceoimage.avif" />
+      <OriginStory image="/images/newceo.jpeg" />
       <MissionVision />
       <Accreditations />
       <RegionalFootprint  image="/images/reg.avif" />
