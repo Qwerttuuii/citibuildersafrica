@@ -1,7 +1,7 @@
 // src/data/listings.ts
 export type PropertyType = "Residential" | "Agro" | "Commercial";
 export type ListingStatus = "Now selling" | "Selling fast";
-export type StateName = "Imo" | "Bayelsa" | "Delta" | "Akwa Ibom";
+export type StateName = "Imo" | "Bayelsa"  | "Akwa Ibom";
 
 export type Listing = {
   slug: string;

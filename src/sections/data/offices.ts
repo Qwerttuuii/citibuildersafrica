@@ -20,9 +20,9 @@ export const offices: Office[] = [
     phone: "+234 704 969 1449",
   },
   {
-    state: "Delta",
+    state: "Akwa Ibom",
     tag: "Branch Office",
-    address: "Nnebisi Road, Asaba, Delta State",
+    address: "Uyo, Akwa Ibom State",
     phone: "+234 708 123 0567",
   },
 ];

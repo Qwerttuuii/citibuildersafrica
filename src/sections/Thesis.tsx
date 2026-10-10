@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const footprint = [
   { state: "Imo",  },
   { state: "Bayelsa",  },
-  { state: "Delta", },
+  
   { state: "Akwa Ibom" },
 ];
 

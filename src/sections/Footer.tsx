@@ -13,7 +13,7 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-const cities = ["Owerri", "Yenagoa", "Asaba"];
+const cities = ["Owerri", "Yenagoa", "Uyo"];
 
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
