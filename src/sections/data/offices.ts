@@ -22,7 +22,7 @@ export const offices: Office[] = [
   {
     state: "Akwa Ibom",
     tag: "Branch Office",
-    address: "Uyo, Akwa Ibom State",
+    address: "No. 500 Oron Road Uyo, Akwa Ibom State",
     phone: "+234 708 123 0567",
   },
 ];
